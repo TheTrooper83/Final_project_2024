@@ -22,15 +22,19 @@ def lcn(X, kernel):
     """
     if X.ndim != 2:
         raise ValueError("Input must be a 2D matrix.")
-    Xh = convolve2d(X, kernel, mode='same', boundary='symm')
+    # print('test')
+    # Xh = convolve2d(X, kernel, mode='same', boundary='symm')
+    Xh = convolve2d(X, kernel, mode='same', boundary='fill', fillvalue=0)
     V = X - Xh
     S = np.sqrt(convolve2d(np.power(V, 2.0),
-                kernel, mode='same', boundary='symm'))
+                # kernel, mode='same', boundary='symm'))
+                kernel, mode='same', boundary='fill', fillvalue=0))
     S2 = np.zeros(S.shape) + S.mean()
     S2[S > S.mean()] = S[S > S.mean()]
     if S2.sum() == 0.0:
         S2 += 1.0
     return V / S2
+
 
 
 def lcn_v2(X, kernel, mean_scalar=1.0):
@@ -50,7 +54,7 @@ def lcn_v2(X, kernel, mean_scalar=1.0):
         The processed output.
     """
     if X.ndim != 2:
-        raise ValueError("Input must be a 2D matrix.")
+        raise ValueError("Input must be a 2D matrix.")    
     Xh = convolve2d(X, kernel, mode='same', boundary='symm')
     V = X - Xh
     S = np.sqrt(convolve2d(np.power(V, 2.0),
