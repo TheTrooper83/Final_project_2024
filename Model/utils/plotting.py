@@ -4,6 +4,28 @@ import numpy as np
 from sklearn.metrics import confusion_matrix
 import pandas as pd
 
+
+# Adapted From https://www.tensorflow.org/tutorials/load_data/images
+def plot_sample_images(data, labels):
+
+    # Create a new figure with a specific size of 10x10
+    plt.figure(figsize=(10, 10))
+
+    # Loop over the first 9 images in the dataset
+    for i in range(9):
+        
+        # Create a subplot in a 3x3 grid
+        ax = plt.subplot(3, 3, i + 1)
+        
+        # Display the i-th image from the 'train_data'    
+        plt.imshow(data[:, :, :, i])
+        
+        # Set the title of the subplot to the corresponding label in 'train_labels'
+        plt.title(labels[i])
+        
+        # Turn off the axis to remove ticks and labels for a cleaner display
+        plt.axis("off")
+
 def plot_accuracy_metric(dataframe, plotname):
 
     accuracy = dataframe["accuracy"]
