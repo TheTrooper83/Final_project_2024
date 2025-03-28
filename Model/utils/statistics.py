@@ -7,6 +7,42 @@ from keras.models import  Model
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+
+def label_count_plot(labels, x_axis, y_axis, title, axis=None):
+    """
+    Creates a bar plot to visualize the count of unique labels in a dataset.
+
+    Parameters:
+    -----------
+    labels : array-like
+        A list, array, or similar structure containing categorical data.
+    x_axis : str
+        The label for the x-axis of the plot.
+    y_axis : str
+        The label for the y-axis of the plot.
+    title : str
+        The title of the bar plot.
+
+    Returns: None
+    --------
+    """
+
+    # Get unique labels and their counts from the input data
+    unqique, counts = np.unique(labels, return_counts=True)
+
+    # Combine the unique labels and their counts into a dictionary
+    dict_counts =  dict(zip(unqique, counts))
+
+    # Create a bar plot using Seaborn
+    # x-axis: unique labels
+    # y-axis: counts of each label
+    # Set the axis labels and title of the plot
+    sns.barplot(dict_counts, x=dict_counts.keys(), y= dict_counts.values(),
+                 ax=axis).set(xlabel=x_axis, ylabel=y_axis, title=title) 
+
+
+
+
 # https://stackoverflow.com/questions/56518924/how-we-can-get-the-total-number-of-neurons-from-a-model-in-keras-is-there-any-f
 
 # https://keras.io/guides/sequential_model/

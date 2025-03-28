@@ -1,0 +1,21 @@
+Model,Name,Dropout / Dropblock,Average Epoch,Total Time,Test Accuracy
+Model 1A, Simple CNN Baseline Model ,Baseline,00:01:24,01:10:05,92.81%
+Model 1B, Simple CNN with Max pool ,Baseline,00:00:21,00:17:05,94.71%
+Model 2, Simple CNN w/ Max pool & Hyper-parameter search ,Baseline,00:00:44,00:37:01,94.76%
+Model 3, Simple CNN w/ Max pool w/ Dropout,Dropout,00:00:23,00:19:00,93.79%
+Model 4, Simple CNN w/ Max pooll  w/ Dropblock,Dropblock,00:00:40,00:33:37,94.75%
+Model 5, Simple CNN w/ Max pool w/ Dropout + Augmentation,Dropout,00:00:26,00:21:36,94.28%
+Model 6, Simple CNN w/ Max pooll w/ Dropblock + Augmentation,Dropblock,00:00:41,00:34:08,94.78%
+Model 7, Applying Batch Normalisation w/ Dropout,Dropout,00:00:36,00:29:46,95.67%
+Model 8, Applying Batch Normalisation w/ Dropblock,Dropblock,00:00:48,00:40:00,96.05%
+Model 9 , Applying Bottleneck w/ Dropout,Dropout,00:00:36,00:29:50,95.56%
+Model 10, Applying Bottleneck w/ Dropblock,Dropblock,00:00:51,00:42:30,95.88%
+Model 11, Replacing ReLu with Maxout Activation w/ Dropout,Dropout,00:00:34,00:27:59,93.46%
+Model 12, Replacing ReLu with Maxout Activation w/ Dropblock,Dropblock,00:00:41,00:34:26,94.24%
+Model 13, Applying Maxnorm w/ Dropout,Dropout,00:00:36,00:30:09,95.51%
+Model 14, Applying Maxnorm w/ Dropblock,Dropblock,00:00:56,00:46:32,95.83%
+Model 15, Apply L2 regularization w/ Dropout,Dropout,00:00:35,00:29:31,94.95%
+Model 16, Apply L2 regularization w/ Dropblock,Dropblock,00:00:52,00:43:15,95.23%
+Model 17, Applying 1 cycle learning rate w/ Dropout,Dropout,00:00:41,00:34:31,93.80%
+Model 18, Applying 1 cycle learning rate w/ Dropblock,Dropblock,00:00:54,00:45:24,95.91%
+Replicated Model, Improving Neural Networks w/ Dropout,replicated,00:01:32,07:37:39,97.06%

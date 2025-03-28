@@ -91,7 +91,8 @@ def model_comparison_confusion_matrix(model_1_name, model_2_name, dataset, *args
 
     model_diff = model_1_cm - model_2_cm
     # sns.heatmap(model_diff, annot=True, fmt='d', cmap='viridis', ax=args[0])
-    sns.heatmap(model_diff, annot=True, fmt='d', cmap='viridis')
+    # sns.heatmap(model_diff, annot=True, fmt='d', cmap='viridis')
+    sns.heatmap(model_diff, annot=True, fmt='d', cmap='coolwarm')
 
     plt.xlabel('Predicted Label', fontsize=12)
     plt.ylabel('True Label', fontsize=12)
@@ -151,3 +152,31 @@ def plot_accuracy_metric_comparison(dataframe_1, df1_name_str, dataframe_2, df2_
     
     plt.tight_layout()
     plt.show()
+
+def confusion_matrix_misclassification(model_name, dataset):
+    
+    y_pred = model_name.predict(dataset, verbose=0)
+
+    # https://stackoverflow.com/questions/56226621/how-to-extract-data-labels-back-from-tensorflow-dataset 
+    y_true = np.concatenate([y for x, y in dataset], axis=0)
+
+    plt.figure(figsize=(12,5))
+
+    cm = confusion_matrix(np.argmax(y_true, axis=1),np.argmax(y_pred, axis=1))
+
+    # https://stackoverflow.com/questions/56084882/how-to-show-precision-in-a-confusion-matrix
+    return np.sum(cm) - np.trace(cm)
+
+def confusion_matrix_avarage_correct_classifications(model_name, dataset):
+    
+    y_pred = model_name.predict(dataset, verbose=0)
+
+    # https://stackoverflow.com/questions/56226621/how-to-extract-data-labels-back-from-tensorflow-dataset 
+    y_true = np.concatenate([y for x, y in dataset], axis=0)
+
+    plt.figure(figsize=(12,5))
+
+    cm = confusion_matrix(np.argmax(y_true, axis=1),np.argmax(y_pred, axis=1))
+
+    # https://stackoverflow.com/questions/56084882/how-to-show-precision-in-a-confusion-matrix
+    return np.diag(cm)
